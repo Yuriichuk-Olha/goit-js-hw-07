@@ -20,5 +20,5 @@ const galleryItemsLink = galleryItems.map(item =>
 
     galleryItemsRef.insertAdjacentHTML("afterbegin", galleryItemsLink);
 
-    
+    // === бібліотека окремо ===== simpleLightbox
 new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 })

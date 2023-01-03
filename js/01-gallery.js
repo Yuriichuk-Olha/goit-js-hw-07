@@ -25,25 +25,27 @@ const galleryItemsLink = galleryItems.map(item =>
     
     function onGallery(event){
         
-       // event.preventDefault();
-       // console.log(event.target);
+        event.preventDefault();
         if(event.target.nodeName !== "IMG"){
             return
         }
-        document.body.style.backgroundColor = event.target.dataset.source
+
+        // ===== бібліотека у функції ===== basicLightbox ///
+
+        const instance = basicLightbox.create(`
+        <img src = ${event.target.dataset.source} width="800" height="600">
+        `)
+    
+        instance.show()
+    
+        galleryItemsRef.addEventListener('keydown', (event) => {
+            if(event.code === 'Escape'){
+                // console.log(event.code);
+            instance.close()
+            }
+    })
     }
 
-    const instance = basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600">
-    `)
 
-    instance.show()
-
-    galleryItemsRef.addEventListener('keydouwn', (event) => {
-        if(event.code === 'Escape'){
-            console.log(event.code);
-        instance.close()
-        }
-})
 
 
